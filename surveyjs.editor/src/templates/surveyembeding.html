@@ -1,0 +1,32 @@
+﻿<script type="text/html" id="surveyembeding">
+    <div class="row">
+        <select data-bind="value:koLibraryVersion">
+            <option value="knockout" data-bind="text: $root.getLocString('ew.knockout')"></option>
+            <option value="react" data-bind="text: $root.getLocString('ew.react')"></option>
+        </select>
+        <select data-bind="value:koScriptUsing">
+            <option value="bootstrap" data-bind="text: $root.getLocString('ew.bootstrap')"></option>
+            <option value="standard" data-bind="text: $root.getLocString('ew.standard')"></option>
+        </select>
+        <select data-bind="value:koShowAsWindow">
+            <option value="page" data-bind="text: $root.getLocString('ew.showOnPage')"></option>
+            <option value="window" data-bind="text: $root.getLocString('ew.showInWindow')"></option>
+        </select>
+        <label class="checkbox-inline" data-bind="visible:koHasIds">
+            <input type="checkbox" data-bind="checked:koLoadSurvey" />
+            <span data-bind="text: $root.getLocString('ew.loadFromServer')"></span>
+        </label>
+    </div>
+    <div class="panel">
+        <div class="panel-heading" data-bind="text: $root.getLocString('ew.titleScript')"></div>
+        <div id="surveyEmbedingHead" style="height:70px;width:100%"></div>
+    </div>
+    <div class="panel" data-bind="visible: koVisibleHtml">
+        <div class="panel-heading"  data-bind="text: $root.getLocString('ew.titleHtml')"></div>
+        <div id="surveyEmbedingBody" style="height:30px;width:100%"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading"  data-bind="text: $root.getLocString('ew.titleJavaScript')"></div>
+        <div id="surveyEmbedingJava" style="height:300px;width:100%"></div>
+    </div>
+</script>

@@ -1,0 +1,11 @@
+{
+  "name": "surveyjs.editor",
+  "globalDependencies": {
+    "ace": "github:DefinitelyTyped/DefinitelyTyped/ace/ace.d.ts#73110d92bdab2367e326f297bef3574285cba329",
+    "bootstrap-notify": "registry:dt/bootstrap-notify#3.1.3+20161003194659",
+    "jquery": "registry:dt/jquery#1.10.0+20160929162922",
+    "knockout": "github:DefinitelyTyped/DefinitelyTyped/knockout/knockout.d.ts#73110d92bdab2367e326f297bef3574285cba329",
+    "qunit": "github:DefinitelyTyped/DefinitelyTyped/qunit/qunit.d.ts#73110d92bdab2367e326f297bef3574285cba329",
+    "surveyjs": "github:andrewtelnov/surveyjs/lib_typings/survey.d.ts"
+  }
+}

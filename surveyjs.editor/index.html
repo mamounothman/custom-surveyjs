@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Editor</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <!-- <link href="dist/css/surveyeditor.css" type="text/css" rel="stylesheet" /> -->
+  <link href="css/style.css" type="text/css" rel="stylesheet" />
+  <link href="css/main.css" type="text/css" rel="stylesheet" />
+  <link href="css/surveyeditor.css" type="text/css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" type="text/css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" type="text/css" rel="stylesheet" />
+  <link href="js/bootstrap-notify/animate.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/knockout/build/output/knockout-latest.js"></script>
+  <script src="node_modules/survey-knockout-bootstrap/dist/survey.bootstrap.min.js"></script>
+</head>
+<body>
+  <div id="editor"></div>
+  <script src="node_modules/ace-builds/src/ace.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="node_modules/ace-builds/src/worker-json.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="node_modules/ace-builds/src/mode-json.js" type="text/javascript" charset="utf-8"></script> 
+  <script src="js/bootstrap-notify/bootstrap-notify.min.js" type="text/javascript" charset="utf-8"></script> 
+  
+  <script src="dist/surveyeditor.js"></script>
+  <script type="text/javascript">
+    var editor = new SurveyEditor.SurveyEditor("editor");
+    editor.koViewType("actions");
+  </script>
+</body>
+</html>

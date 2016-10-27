@@ -1,0 +1,40 @@
+.topmenu > li.active {
+  border-top: 4px solid #19aa8d;
+    border-left: none;
+}
+
+.maincontent {
+    margin-top: 48px;
+    margin-bottom: 48px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.surveycontent {
+    align-content: center;
+    width:500px;
+}
+.examplesidebar {
+    float:left;
+    left:0;
+    background-color: #2f4050;
+    width:220px;
+}
+.examplecontent {
+    margin-left: 220px;
+}
+.exampleoptions {
+    margin-top: 30px;
+}
+span.navy {
+  color: #1ab394;
+}
+a.navy-link {
+  color: #1ab394;
+  text-decoration: none;
+}
+.navy-line {
+  width: 60px;
+  height: 1px;
+  margin: 60px auto 0;
+  border-bottom: 2px solid #1ab394;
+}

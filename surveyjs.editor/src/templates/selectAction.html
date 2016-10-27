@@ -1,0 +1,27 @@
+<script type="text/html" id="actions">
+    <div class="panel" style="width:100%">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="surveies" class="form-group col-sm-8">
+                        <label for="old-surveies">Select Survey</label>
+                        <!-- <select class="form-control" id="old-surveies" name="old-surveies"></select> -->
+                        <!-- <pre data-bind="text: JSON.stringify(ko.toJS(availableSurveies))"></pre> -->
+                        <!--  -->
+                        <select id="surveies" class="form-control" data-bind=" 
+                        options: availableSurveies,
+                        optionsValue: 'id',
+                        optionsText: 'text'"></select>
+                    </div>
+                    <div>
+                        <div><label>Operations</label></div>
+                        <!-- selectDesignerClick -->
+                        <button alt="Add new survey" type="button" class="btn btn-primary" data-bind="click: addNewSurvey"><span class="glyphicon glyphicon-plus"></span>Add survey</button>
+                        <button id="" type="button" class="btn btn-success " data-bind="event: { click: availableSurveySelect }">Edit survey</button>
+                        <button id="remove" type="button" class="btn btn-danger " data-bind="event: { click: removeSurveyClick }"><span class="glyphicon glyphicon-minus"></span>Remove survey</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
