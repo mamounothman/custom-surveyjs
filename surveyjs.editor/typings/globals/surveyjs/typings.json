@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/andrewtelnov/surveyjs/master/lib_typings/survey.d.ts",
+    "raw": "github:andrewtelnov/surveyjs/lib_typings/survey.d.ts",
+    "typings": "https://raw.githubusercontent.com/andrewtelnov/surveyjs/master/lib_typings/survey.d.ts"
+  }
+}

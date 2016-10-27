@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/e581a26a5fea97ea46aa3124bc1455fc7e59f783/bootstrap-notify/bootstrap-notify.d.ts",
+    "raw": "registry:dt/bootstrap-notify#3.1.3+20161003194659",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/e581a26a5fea97ea46aa3124bc1455fc7e59f783/bootstrap-notify/bootstrap-notify.d.ts"
+  }
+}
