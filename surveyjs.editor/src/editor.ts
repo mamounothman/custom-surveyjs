@@ -161,7 +161,7 @@ module SurveyEditor {
         }
         public get availableSurveiesOptionsList()  {
             var surveies = new Array;
-            surveies.push({text: '-Select Survey'});
+            //surveies.push({text: '-Select Survey'});
             jQuery.ajax({
                  url: "http://localhost:3000/get-surveies",
                  type: "get",
@@ -318,18 +318,21 @@ module SurveyEditor {
             this.text = "{pages: [{name: 'page1'}]}";
             this.surveyId = "";
             this.showDesigner();
+            $('.flip-container').toggleClass('hover');
+
         }
         private removeSurvey(e, element) {
             var self = this;
             $("#remove").toggleClass('disabled');
-            var survey = jQuery('#surveies option:selected').val();
+            var survey = jQuery('#surveies option:selected').val() || self.surveyId;;
+            
             $.ajax({
                 url: "http://localhost:3000/remove-survey/" + survey,
                 type: 'GET',
                 beforeSend: function() {
                     self.notify = jQuery.notify({
                         title: "Removing Survey",
-                        message: "<strong>Removing Survey</strong>Do not close this page...",
+                        message: "Survey has been removed successfully",
                         animate: {
                             enter: "animated fadeInDown",
                             exit: "animated fadeOutUp"
@@ -337,7 +340,10 @@ module SurveyEditor {
                     });
                  },
                  success: function(data) {
-                    //
+                    setTimeout(function() {
+                        window.location.href = ""
+                    }, 2000);
+                    //self.selectAction();
                  },
                  complete: function() {
                     $("#remove").toggleClass('disabled');
@@ -358,17 +364,20 @@ module SurveyEditor {
             this.koViewType("actions");
         }
         private availableSurveySelect(e, element) {
-            var self = this;
-            var survey = jQuery('#surveies option:selected').val();
+            var self = window.editor;
+            console.log(self);
+            var survey = jQuery('#surveies option:selected').val() || jQuery(element.currentTarget).attr('id');
             if(survey != '') {
                 jQuery.ajax({
                     url: "http://localhost:3000/get-survey/" + survey,
                     async: false,
                     method: 'GET',
                     success: function(data) {
-                        console.log(data);
                         self.text = data[0].text;
                         self.surveyId = data[0]._id;
+                        console.log(self);
+                        //self.koViewType("editor");
+                        $('.flip-container').toggleClass('hover');
                     }
                 });
             }
@@ -406,6 +415,7 @@ module SurveyEditor {
                             exit: "animated fadeOutUp"
                         },
                     });
+                    //jQuery('.flip-container ').toggleClass('hover');
                  }
             });
         }

@@ -37,3 +37,67 @@
 
 .svd_navbarbuttons {
   margin-top: 3px; }
+
+/* entire container, keeps perspective */
+/*.flip-container {
+  perspective: 1000px;
+}*/
+  /* flip the pane when hovered */
+  /*.flip-container .flipper, */
+/*  .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }*/
+
+/* flip speed goes here */
+/*.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}*/
+
+/* hide back of pane during swap */
+/*.front, .back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}*/
+
+/* front pane, placed above back */
+/*.front {
+  z-index: 2;*/
+  /* for firefox 31 */
+/*  transform: rotateY(0deg);
+  width: 100%;  
+}
+*/
+/* back, initially hidden pane */
+/*.back {
+  transform: rotateY(180deg);
+}
+*/
+/*.add-survey {
+  margin-top: 100px;
+}
+
+.card {
+    height: 165px;
+    max-width: 330px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.5);
+}
+
+h2 {
+  padding: 20px;
+  color: white;
+  background: #3E4FB2;
+  font-weight: 300;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}*/

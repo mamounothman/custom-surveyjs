@@ -2,26 +2,61 @@
     <div class="panel" style="width:100%">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <div id="surveies" class="form-group col-sm-8">
-                        <label for="old-surveies">Select Survey</label>
+                <div class="col-md-12">
+                    <div class="add-survey">
+                            <hr />
+                            <button alt="Add new survey" type="button" class="btn btn-primary" data-bind="click: addNewSurvey"><span class="glyphicon glyphicon-plus"></span>Add survey</button>
+                            <hr />
+                    </div>
+                    <h2 for="old-surveies">Select Survey</h2>
+                    <hr />
                         <!-- <select class="form-control" id="old-surveies" name="old-surveies"></select> -->
                         <!-- <pre data-bind="text: JSON.stringify(ko.toJS(availableSurveies))"></pre> -->
                         <!--  -->
-                        <select id="surveies" class="form-control" data-bind=" 
+                    <!-- <select id="surveies" class="form-control" data-bind=" 
                         options: availableSurveies,
                         optionsValue: 'id',
-                        optionsText: 'text'"></select>
-                    </div>
+                        optionsText: 'text'"></select><hr /> -->
                     <div>
-                        <div><label>Operations</label></div>
-                        <!-- selectDesignerClick -->
-                        <button alt="Add new survey" type="button" class="btn btn-primary" data-bind="click: addNewSurvey"><span class="glyphicon glyphicon-plus"></span>Add survey</button>
-                        <button id="" type="button" class="btn btn-success " data-bind="event: { click: availableSurveySelect }">Edit survey</button>
-                        <button id="remove" type="button" class="btn btn-danger " data-bind="event: { click: removeSurveyClick }"><span class="glyphicon glyphicon-minus"></span>Remove survey</button>
+                        <!-- <div><label>Operations</label></div> -->
+                        
+                        <!-- <button id="" type="button" class="btn btn-success " data-bind="event: { click: availableSurveySelect }">Edit survey</button>
+                        <button id="remove" type="button" class="btn btn-danger " data-bind="event: { click: removeSurveyClick }"><span class="glyphicon glyphicon-minus"></span>Remove survey</button> -->
+                    </div>
+                </div>
+                <div class="col-md-12" data-bind="foreach: availableSurveies">
+
+                    <div class="col-md-3">
+                        <!--Card-->
+                        <div class="card testimonial-card color-swatch brand-success">
+                            <h2 class="avatar" data-bind="text: $data.text"></h2>
+
+                            <!--Bacground color-->
+                            <div class="card-up default-color-dark">
+                            </div>
+
+                            <!--Avatar-->
+                            
+
+                            <div class="card-block">
+                                <!--Name-->
+                                <!-- <a href="#" data-bind="text: $data.text, " class="btn btn-primary"></a> -->
+                                <!-- <h4 class="card-title" data-bind=""></h4> -->
+                                <hr>
+                                <!--Quotation-->
+                                <!-- <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, adipisci</p> -->
+                                <!-- <a href="" class ="btn btn-primary" data-bind="attr: {id: $data.id}, event: {click: $parent.availableSurveySelect}">Edit</a> -->
+                                <div>
+                                    <a class="btn btn-primary rotate-btn" data-card="card-1" data-bind="attr: {id: $data.id}, event: {click: $parent.availableSurveySelect}"><i class="fa fa-repeat"></i> Edit</a>
+                                    <!-- <a class="btn btn-danger" data-card="card-1"><i class="fa fa-times"></i> Remove</a> -->
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.Card-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </script>
+
