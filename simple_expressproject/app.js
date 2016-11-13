@@ -1,9 +1,15 @@
+// var system = require('system');
 var express = require('express');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var app = express();
 var ObjectID = require('mongodb').ObjectID;
+var config = require('yaml-config');
+var args = {};
+
+var settings = config.readConfig('./config/config.yml');
+//console.log();
 
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,11 +33,11 @@ app.post('/save-survey', function (req, res) {
   var survey = req.body.survey;
   var surveyId = req.body.surveyId;
   
-  MongoClient.connect('mongodb://localhost:27017/survey', function(err, db) {
+  MongoClient.connect('mongodb://' + settings.database.host + ':' + settings.database.port + '/' + settings.database.name, function(err, db) {
     if (err) {
       throw err;
     }
-    var collection = db.collection('col1');
+    var collection = db.collection(settings.database.collection);
     var survey1 = {text: survey};
     if(surveyId) {
       var obj_id = new ObjectID(surveyId);
@@ -51,12 +57,12 @@ app.post('/save-survey', function (req, res) {
 });
 
 app.get('/get-surveies', function (req, res) {
-  MongoClient.connect('mongodb://localhost:27017/survey', function(err, db) {
+  MongoClient.connect('mongodb://' + settings.database.host + ':' + settings.database.port + '/' + settings.database.name, function(err, db) {
     if (err) {
       throw err;
     }
     var surveies = [];
-    var collection = db.collection('col1');
+    var collection = db.collection(settings.database.collection);
     var cursor = collection.find();
     cursor.toArray(function (err, doc) {
       if (err) {
@@ -70,14 +76,14 @@ app.get('/get-surveies', function (req, res) {
 });
 
 app.get('/get-survey/:id', function (req, res) {
-  MongoClient.connect('mongodb://localhost:27017/survey', function(err, db) {
+  MongoClient.connect('mongodb://' + settings.database.host + ':' + settings.database.port + '/' + settings.database.name, function(err, db) {
     if (err) {
       throw err;
     }
     var id = req.params.id;
     var obj_id = new ObjectID(id);
     var surveies = [];
-    var collection = db.collection('col1');
+    var collection = db.collection(settings.database.collection);
     var cursor = collection.find({_id: obj_id});
     cursor.toArray(function (err, doc) {
       if(err) {
@@ -93,14 +99,14 @@ app.get('/get-survey/:id', function (req, res) {
 
 
 app.get('/remove-survey/:id', function (req, res) {
-  MongoClient.connect('mongodb://localhost:27017/survey', function(err, db) {
+  MongoClient.connect('mongodb://' + settings.database.host + ':' + settings.database.port + '/' + settings.database.name, function(err, db) {
     if (err) {
       throw err;
     }
     var id = req.params.id;
     var obj_id = new ObjectID(id);
     var surveies = [];
-    var collection = db.collection('col1');
+    var collection = db.collection(settings.database.collection);
     collection.remove({'_id': obj_id}, function(err) {
       if (err) {
         throw err;
@@ -111,6 +117,6 @@ app.get('/remove-survey/:id', function (req, res) {
 });
 
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(settings.server.port, function () {
+  console.log('Example app listening on port ' + settings.server.port);
 });

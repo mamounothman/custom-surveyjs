@@ -11,6 +11,7 @@
 /// <reference path="template_question.html.ts" />
 /// <reference path="../typings/globals/jquery/index.d.ts" />
 /// <reference path="../typings/globals/bootstrap-notify/index.d.ts" />
+/// <reference path="../typings/model/history/index.d.ts" />
 
 module SurveyEditor {
     export class SurveyEditor {
@@ -33,7 +34,6 @@ module SurveyEditor {
         private saveSurveyFuncValue: (no: number, onSaveCallback: (no: number, isSuccess: boolean) => void) => void;
         private options: any;
         private stateValue: string = "";
-        private availableSurveiesOptionsList: any;
 
         public surveyId: string = null;
         public surveyPostId: string = null;
@@ -46,9 +46,10 @@ module SurveyEditor {
         koViewType: any;
         koCanDeleteObject: any;
         koObjects: any; koSelectedObject: any;
+        availableSurveies: any;
         koShowSaveButton: any;
         koGenerateValidJSON: any; koShowOptions: any; koTestSurveyWidth: any;
-        selectDesignerClick: any; addNewSurveyClick: any; removeSurveyClick: any; selectAction: any;selectEditorClick: any; selectTestClick: any; selectEmbedClick: any; availableSurveySelect: any; saveSurveyClick: any;
+        selectDesignerClick: any; addNewSurveyClick: any; removeSurveyClick: any; selectAction: any;selectEditorClick: any; selectTestClick: any; selectEmbedClick: any; saveSurveyClick: any; notify: any;
         generateValidJSONClick: any; generateReadableJSONClick: any;
         doUndoClick: any; doRedoClick: any;
         deleteObjectClick: any;
@@ -161,13 +162,13 @@ module SurveyEditor {
         }
         public get availableSurveiesOptionsList()  {
             var surveies = new Array;
-            //surveies.push({text: '-Select Survey'});
             jQuery.ajax({
                  url: "http://localhost:3000/get-surveies",
                  type: "get",
                  async: false,
                  success: function(data) {
                     var i = 1;
+                    var obj;
                     for (obj of data) {
                         surveies.push({
                             id: obj._id,
@@ -179,9 +180,7 @@ module SurveyEditor {
             });
             return surveies;
         }
-        protected setAvailableSurveiesOptionsList(value) {
-            this.availableSurveiesOptionsList = value;
-        }
+        
         public get state(): string { return this.stateValue; }
         protected setState(value: string) {
             this.stateValue = value;
@@ -321,23 +320,23 @@ module SurveyEditor {
             $('.flip-container').toggleClass('hover');
 
         }
-        private removeSurvey(e, element) {
+        private removeSurvey() {
             var self = this;
             $("#remove").toggleClass('disabled');
-            var survey = jQuery('#surveies option:selected').val() || self.surveyId;;
-            
+            var survey = jQuery('#surveies option:selected').val() || self.surveyId;
             $.ajax({
                 url: "http://localhost:3000/remove-survey/" + survey,
                 type: 'GET',
                 beforeSend: function() {
-                    self.notify = jQuery.notify({
-                        title: "Removing Survey",
-                        message: "Survey has been removed successfully",
+                    let options = <NotifyOptions>{
+                        title: 'Removing Survey',
+                        message: 'Survey has been removed successfully',
                         animate: {
-                            enter: "animated fadeInDown",
-                            exit: "animated fadeOutUp"
-                        },
-                    });
+                            enter: 'animated fadeInDown',
+                            exit: 'animated fadeOutUp'
+                        }
+                    };
+                    self.notify = jQuery.notify(options);
                  },
                  success: function(data) {
                     setTimeout(function() {
@@ -364,8 +363,7 @@ module SurveyEditor {
             this.koViewType("actions");
         }
         private availableSurveySelect(e, element) {
-            var self = window.editor;
-            console.log(self);
+            var self = (<any>window).editor;
             var survey = jQuery('#surveies option:selected').val() || jQuery(element.currentTarget).attr('id');
             if(survey != '') {
                 jQuery.ajax({
@@ -375,28 +373,31 @@ module SurveyEditor {
                     success: function(data) {
                         self.text = data[0].text;
                         self.surveyId = data[0]._id;
-                        console.log(self);
-                        //self.koViewType("editor");
+                        //console.log(self);
                         $('.flip-container').toggleClass('hover');
                     }
                 });
             }
         }
-        private saveSurvey(e, element) {
+        private saveSurvey() {
             jQuery('#save').toggleClass('disabled');
             var self = this;
             var data = { 
-                survey: this.text 
+                survey: this.text,
+                surveyId: null,
             };
-            if(this.surveyId) {
-                data.surveyId = this.surveyId;
+            if(self.surveyId) {
+                data.surveyId = self.surveyId;
+            }
+            else {
+                delete data.surveyId;
             }
             jQuery.ajax({
                  url: "http://localhost:3000/save-survey",
                  type: "POST",
                  data: data, // Access property with <object>.<property>
                  beforeSend: function() {
-                    self.notify =  jQuery.notify({
+                    self.notify =  (<any>jQuery.notify)({
                         title: "Saving Survey",
                         message: "<strong>Saving Survey</strong>Do not close this page...",
                         animate: {

@@ -7,5 +7,8 @@
     "knockout": "github:DefinitelyTyped/DefinitelyTyped/knockout/knockout.d.ts#73110d92bdab2367e326f297bef3574285cba329",
     "qunit": "github:DefinitelyTyped/DefinitelyTyped/qunit/qunit.d.ts#73110d92bdab2367e326f297bef3574285cba329",
     "surveyjs": "github:andrewtelnov/surveyjs/lib_typings/survey.d.ts"
+  },
+  "dependencies": {
+    "history": "registry:npm/history#2.0.0+20160607172317"
   }
 }
