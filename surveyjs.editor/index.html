@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" type="text/css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" type="text/css" rel="stylesheet" />
   <link href="js/bootstrap-notify/animate.css" type="text/css" rel="stylesheet" />
+  <link href="css/font-awesome-4.5.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
   <!-- <link href="css/MDB/css/mdb.min.css" type="text/css" rel="stylesheet" /> -->
   
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -25,7 +26,12 @@
   <script src="dist/surveyeditor.js"></script>
 </head>
 <body>
-  <div id="editor"></div>
+  <div class="container">
+    <div class="logo">
+      <img class="img-responsive" src="images/Tabadul-Logo.png">
+    </div>
+    <div id="editor"></div>
+  </div>
   <script type="text/javascript">
     var editor = new SurveyEditor.SurveyEditor("editor");
     editor.koViewType("actions");

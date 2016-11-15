@@ -12,13 +12,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 100;
+  font-weight: normal;
 }
 h1 {
   font-size: 30px;
 }
 h2 {
   font-size: 24px;
+
 }
 h3 {
   font-size: 16px;
@@ -588,7 +589,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   }
 }
 .btn {
-  border-radius: 3px;
+  border-radius: 5px;
 }
 .float-e-margins .btn {
   margin-bottom: 5px;
@@ -622,6 +623,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
   background-color: #1ab394;
   border-color: #1ab394;
   color: #FFFFFF;
+  margin-bottom: 10px;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -825,6 +827,7 @@ fieldset[disabled] .btn-warning.active {
   background-color: #ed5565;
   border-color: #ed5565;
   color: #FFFFFF;
+  margin-bottom: 10px;
 }
 .btn-danger:hover,
 .btn-danger:focus,
@@ -3303,6 +3306,7 @@ body {
   font-size: 13px;
   color: #676a6c;
   overflow-x: hidden;
+  background: #eee;
 }
 html,
 body {
@@ -8225,4 +8229,8 @@ body.md-skin {
   #page-wrapper {
     margin: 0;
   }
+}
+
+span {
+    margin-right: 2px;
 }
